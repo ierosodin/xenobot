@@ -257,7 +257,7 @@ int main(int argc, char* argv[])
 	if(color_spec == "yellow" || color_spec == "both")
 	{
 		inner_threshold_image_sub =
-                nh.subscribe("inner_threshold_image", 5, inner_threshold_image_callback);
+                nh.subscribe("inner_threshold_image", 5, inner_threshold_image_callback, ros::TransportHints().unreliable());
 		create_trackbars_y();
 
 	}
@@ -265,7 +265,7 @@ int main(int argc, char* argv[])
 	if(color_spec == "white" || color_spec == "both")
 	{
 		outer_threshold_image_sub =
-                nh.subscribe("outer_threshold_image", 5, outer_threshold_image_callback);
+                nh.subscribe("outer_threshold_image", 5, outer_threshold_image_callback, ros::TransportHints().unreliable());
 		create_trackbars_w();
 	}
 

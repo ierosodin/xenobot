@@ -221,9 +221,9 @@ int main(int argc, char* argv[])
 	distort_image_publisher = 
 		node.advertise<sensor_msgs::Image>("xenobot/distort_image", 10);
 	threshold_setting_subscriber =
-		node.subscribe("/xenobot/calibration/threshold_setting", 10, threshold_setting_callback);
+		node.subscribe("/xenobot/calibration/threshold_setting", 10, threshold_setting_callback, ros::TransportHints().unreliable());
 	wheel_command_subscriber =
-		node.subscribe("/xenobot/wheel_command", 1, wheel_command_callback);
+		node.subscribe("/xenobot/wheel_command", 1, wheel_command_callback, ros::TransportHints().unreliable());
 
 	load_yaml_parameter();
 
