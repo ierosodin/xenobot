@@ -75,8 +75,11 @@ void LaneDetector::publish_images(
 	cv::Mat& bird_view_image)
 {
 	sensor_msgs::ImagePtr img_msg;
+        cv::Mat& rgb_lane_mark_image;
 
-	img_msg = cv_bridge::CvImage(std_msgs::Header(), "8UC3", lane_mark_image).toImageMsg();
+        cv::cvtColor(lane_mark_image, rgb_lane_mark_image, CV_BGR2RGB);
+        
+	img_msg = cv_bridge::CvImage(std_msgs::Header(), "8UC3", rgb_lane_mark_image).toImageMsg();
 	marked_image_publisher.publish(img_msg);
 
 	if(calibrate_mode == false) {
